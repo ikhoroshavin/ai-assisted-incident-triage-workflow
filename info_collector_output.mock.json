@@ -1,0 +1,150 @@
+{
+  "collection_meta": {
+    "incident_hint": "PIX success_rate drop, ProviderX, BR",
+    "requested_window": {
+      "from": "2026-08-11T13:45:00Z",
+      "to": "2026-08-11T14:30:00Z"
+    },
+    "instances": ["payment-router-prod", "psp-gateway-prod"],
+    "domains": ["pix", "providerx"],
+    "collected_at": "2026-08-11T14:30:12Z"
+  },
+
+  "results": {
+    "logs": [
+      {
+        "source": "logs",
+        "system": "payment-router",
+        "instance": "payment-router-prod-3",
+        "timestamp": "2026-08-11T14:12:07Z",
+        "level": "ERROR",
+        "message": "PIX authorization failed: provider timeout (code=PSP_TIMEOUT)",
+        "error_code": "PSP_TIMEOUT",
+        "trace_id": "9f3a1c7b",
+        "link": "https://kibana.internal/app/discover#/doc/9f3a1c7b"
+      },
+      {
+        "source": "logs",
+        "system": "payment-router",
+        "instance": "payment-router-prod-1",
+        "timestamp": "2026-08-11T14:14:52Z",
+        "level": "ERROR",
+        "message": "PIX authorization failed: upstream 504 from ProviderX",
+        "error_code": "UPSTREAM_504",
+        "trace_id": "a1b2c3d4",
+        "link": "https://kibana.internal/app/discover#/doc/a1b2c3d4"
+      },
+      {
+        "source": "logs",
+        "system": "card-processor",
+        "instance": "card-processor-prod-2",
+        "timestamp": "2026-08-11T14:10:00Z",
+        "level": "WARN",
+        "message": "Retry scheduled for Visa auth (unrelated to PIX)",
+        "error_code": "RETRY",
+        "trace_id": "zz00zz00",
+        "link": "https://kibana.internal/app/discover#/doc/zz00zz00"
+      }
+    ],
+
+    "dashboards": [
+      {
+        "source": "dashboards",
+        "dashboard": "APM Success Rate",
+        "metric": "pix.success_rate",
+        "provider": "ProviderX",
+        "country": "BR",
+        "timestamp": "2026-08-11T14:15:00Z",
+        "window": "5m",
+        "value": 0.71,
+        "baseline": 0.96,
+        "unit": "ratio",
+        "link": "https://grafana.internal/d/apm-pix/pix-success-rate"
+      },
+      {
+        "source": "dashboards",
+        "dashboard": "APM Success Rate",
+        "metric": "ideal.success_rate",
+        "provider": "ProviderZ",
+        "country": "NL",
+        "timestamp": "2026-08-11T14:15:00Z",
+        "window": "5m",
+        "value": 0.95,
+        "baseline": 0.96,
+        "unit": "ratio",
+        "link": "https://grafana.internal/d/apm-ideal/ideal-success-rate"
+      }
+    ],
+
+    "jira": [
+      {
+        "source": "jira",
+        "ticket_id": "APM-4821",
+        "created": "2026-08-11T14:22:00Z",
+        "status": "Open",
+        "priority": "High",
+        "summary": "PIX payments failing for BR merchants",
+        "description": "Multiple merchants report PIX timeouts starting ~14:15 UTC. Success rate on dashboard dropped sharply.",
+        "reporter": "ops.duty",
+        "link": "https://jira.internal/browse/APM-4821"
+      }
+    ],
+
+    "slack": [
+      {
+        "source": "slack",
+        "channel": "#apm-incidents",
+        "ts": "2026-08-11T14:18:33Z",
+        "user": "n.ivanova",
+        "text": "у нас PIX колом в Бразилии? success rate просел на дашборде",
+        "thread_link": "https://company.slack.com/archives/C0APM/p1786371513"
+      }
+    ],
+
+    "support_tickets": [
+      {
+        "source": "support_tickets",
+        "ticket_id": "SUP-99120",
+        "created": "2026-08-11T14:20:11Z",
+        "intake_channel": "merchant_portal",
+        "merchant_id": "M-3391",
+        "text": "customers can't complete PIX payment, stuck on 'processing' then error",
+        "link": "https://support.internal/t/99120"
+      },
+      {
+        "source": "support_tickets",
+        "ticket_id": "SUP-99123",
+        "created": "2026-08-11T14:24:40Z",
+        "intake_channel": "email",
+        "merchant_id": "M-5570",
+        "text": "PIX checkout failing for our BR customers since ~15 min ago",
+        "link": "https://support.internal/t/99123"
+      }
+    ],
+
+    "status_pages": [
+      {
+        "source": "status_pages",
+        "provider": "ProviderX",
+        "format": "api",
+        "fetched_at": "2026-08-11T14:25:00Z",
+        "status": "investigating",
+        "component": "PIX",
+        "region": "BR",
+        "message": "We are aware of elevated error rates affecting PIX transactions in Brazil. Next update in 30 minutes.",
+        "posted_at": "2026-08-11T14:20:00Z",
+        "link": "https://status.providerx.com/incidents/8842"
+      }
+    ]
+  },
+
+  "collection_errors": [
+    {
+      "source": "status_pages",
+      "provider": "ProviderY",
+      "format": "html_scrape",
+      "fetched_at": "2026-08-11T14:25:03Z",
+      "error": "timeout fetching https://status.providery.com after 2 retries"
+    }
+  ]
+}
