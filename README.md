@@ -1,6 +1,6 @@
 # AI Incident Collector
 
-The model of an AI workflow that collects messages from different sources, examines them and creates a JSON output with scoring of relevance.
+The model of an AI workflow that collects messages from different sources, examines them and creates a JSON output with scoring of relevance. It was created as a little test demo, so it has known issues and could be written more elegant.
 
 ## How to use
 
