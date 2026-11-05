@@ -5,3 +5,6 @@ __pycache__/
 # Runtime output
 logs.json
 audit.json
+
+# рабочие артефакты агентов, не коммитятся
+TODO_*.md
