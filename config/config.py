@@ -1,7 +1,7 @@
 import anthropic
 from dotenv import load_dotenv
 
-#loading of env component for the anthropic key
+# loading of env component for the anthropic key
 load_dotenv()
 
 # The model parameters

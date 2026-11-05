@@ -1,0 +1,26 @@
+# Только конфиг инструментов (не пакет): ruff, mypy. Тестов нет.
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+# Незакоммиченная работа владельца — не форматировать и не править (убрать из списка после коммита).
+extend-exclude = ["workflow.py", ".env", "output.txt"]
+# Чтобы исключения работали и когда pre-commit передаёт файлы явным списком.
+force-exclude = true
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+# baseline, ужесточать позже: существующие нарушения, чтобы `ruff check` был зелёным.
+ignore = [
+    "E501",  # baseline: длинные комментарии
+    "F401",  # baseline: неиспользуемые импорты
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+check_untyped_defs = false
+files = ["info_collector.py", "config"]
