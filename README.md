@@ -1,4 +1,4 @@
-# AI Incident Collector
+# AI-Assisted Incident Triage Workflow
 
 The model of an AI workflow that collects messages from different sources, examines them and creates a JSON output with scoring of relevance.
 
