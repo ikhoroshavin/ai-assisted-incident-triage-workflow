@@ -8,3 +8,7 @@ audit.json
 
 # рабочие артефакты агентов, не коммитятся
 TODO_*.md
+
+# ruff / mypy
+.ruff_cache/
+.mypy_cache/

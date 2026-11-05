@@ -1,0 +1,5 @@
+# Инструменты разработки: pip install -r requirements-dev.txt
+# Рантайм-зависимости (anthropic, python-dotenv) файлом не зафиксированы — см. CLAUDE.md.
+ruff==0.17.3
+mypy==2.4.1
+pre-commit==4.7.0
